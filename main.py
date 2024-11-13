@@ -27,6 +27,8 @@ driver.maximize_window()
 action = ActionChains(driver)
 
 LogIn = LogIn_Page(driver, action)
+LogIn.GoogleSafe_page()
+
 
 #Google 安全驗證
 ele = driver.find_element(By.XPATH, '//*[@id="details-button"]')
