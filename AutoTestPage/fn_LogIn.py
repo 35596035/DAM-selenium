@@ -28,4 +28,4 @@ class LogIn_Page:
         ele = self.driver.find_element(By.XPATH, '//*[@id="proceed-link"]')
         self.action.click(ele).perform()
 
-        time.sleep(60)
+        time.sleep(3)

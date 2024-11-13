@@ -29,14 +29,8 @@ action = ActionChains(driver)
 LogIn = LogIn_Page(driver, action)
 LogIn.GoogleSafe_page()
 
-
-#Google 安全驗證
-ele = driver.find_element(By.XPATH, '//*[@id="details-button"]')
-action.click(ele).perform()
-
-ele = driver.find_element(By.XPATH, '//*[@id="proceed-link"]')
-action.click(ele).perform()
+driver.quit()
 
 #登入畫面
-ele = driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div/div[3]/div[1]/input")
-action.click(ele).send_keys("aegIS@123").perform()
+#ele = driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div/div[3]/div[1]/input")
+#action.click(ele).send_keys("aegIS@123").perform()
