@@ -16,3 +16,20 @@ import io
 from PIL import Image
 # 圖片驗證碼
 import pytesseract
+
+driver = webdriver.Chrome()
+driver.get("https://192.168.15.141:32000/tw/#")
+
+driver.maximize_window()
+action = ActionChains(driver)
+
+#Google 安全驗證
+ele = self.driver.find_element(By.XPATH, '//*[@id="details-button"]')
+self.action.click(ele).perform()
+
+ele = self.driver.find_element(By.XPATH, '//*[@id="proceed-link"]')
+self.action.click(ele).perform()
+
+#登入畫面
+ele = self.driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div/div[3]/div[1]/input")
+self.action.click(ele).send_keys("aegIS@123").perform()
