@@ -21,6 +21,7 @@ class LogIn_Page:
     def __init__(self, driver, action):
         self.driver = driver
         self.action = action
+    
     def GoogleSafe_page(self):
         ele = self.driver.find_element(By.XPATH, '//*[@id="details-button"]')
         self.action.click(ele).perform()
@@ -29,3 +30,13 @@ class LogIn_Page:
         self.action.click(ele).perform()
 
         time.sleep(3)
+    
+    def DAM_LogInPage(self):
+        #count
+        ele = self.driver.find_element(By.XPATH, "/html/body/div/div/div/div[2]/form/div/div[1]/div/div/input")
+        self.action.click(ele).send_keys("william.chiu@dataisec.com").perform()
+        time.sleep(2)
+        #password
+        ele = self.driver.find_element(By.XPATH, "/html/body/div/div/div/div[2]/form/div/div[2]/div/div/input")
+        self.action.click(ele).send_keys("Admin@123@D").perform()
+        time.sleep(2)

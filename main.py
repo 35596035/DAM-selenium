@@ -28,9 +28,6 @@ action = ActionChains(driver)
 
 LogIn = LogIn_Page(driver, action)
 LogIn.GoogleSafe_page()
+LogIn.DAM_LogInPage()
 
 driver.quit()
-
-#登入畫面 test company 1114
-#ele = driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div/div[3]/div[1]/input")
-#action.click(ele).send_keys("aegIS@123").perform()
