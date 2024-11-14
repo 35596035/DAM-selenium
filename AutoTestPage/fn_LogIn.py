@@ -40,3 +40,30 @@ class LogIn_Page:
         ele = self.driver.find_element(By.XPATH, "/html/body/div/div/div/div[2]/form/div/div[2]/div/div/input")
         self.action.click(ele).send_keys("Admin@123@D").perform()
         time.sleep(2)
+
+    def get_captcha(self, path):
+        element = self.driver.find_element(By.XPATH, "/html/body/div/div/div/div[2]/form/div/div[3]/img")
+        self.driver.save_screenshot(path)  # 先將目前的 screen 存起來
+        location = element.location  # 取得圖片 element 的位置
+        size = element.size  # 取得圖片 element 的大小
+        left = location['x'] + 130  # 決定上下左右邊界
+        top = location['y'] + 95
+        right = location['x'] + size['width'] + 230
+        bottom = location['y'] + size['height'] + 120
+        image = Image.open(path)  # 將 screen load 至 memory
+        image = image.crop((left, top, right, bottom))  # 根據位置剪裁圖片
+        image.save(path, 'png')  # 重新儲存圖片為 png 格式
+        time.sleep(3)
+
+    # 圖片辨識
+    def ImgNum(self, path):
+        img = Image.open(path)
+        result = pytesseract.image_to_string(img)
+        print("驗證碼:{:}".format(result))
+        return result
+
+    # 驗證碼輸入框
+    def Input_Num(self, ImgNum):
+        ele = self.driver.find_element(By.XPATH, "/html/body/div/div/div/div[2]/form/div/div[3]/div/div/div/input")
+        self.action.click(ele).send_keys(ImgNum).perform()
+        time.sleep(2)

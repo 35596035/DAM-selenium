@@ -30,4 +30,7 @@ LogIn = LogIn_Page(driver, action)
 LogIn.GoogleSafe_page()
 LogIn.DAM_LogInPage()
 
+LogIn.get_captcha("DAM captcha.png")
+LogIn.Input_Num(LogIn.ImgNum("DAM captcha.png"))
+
 driver.quit()
