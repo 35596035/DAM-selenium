@@ -16,6 +16,7 @@ import io
 from PIL import Image
 # 圖片驗證碼
 import pytesseract
+# pytesseract.pytesseract.tesseract_cmd = "C:\\Users\\USER\Documents\Python Scripts\DAM-selenium\python_tesseract\\tesseract.exe"
 
 #packet file
 from AutoTestPage.fn_LogIn import LogIn_Page
@@ -30,7 +31,16 @@ LogIn = LogIn_Page(driver, action)
 LogIn.GoogleSafe_page()
 LogIn.DAM_LogInPage()
 
-LogIn.get_captcha("DAM captcha.png")
-LogIn.Input_Num(LogIn.ImgNum("DAM captcha.png"))
+
+img_Name = "DAM_captcha.png"
+LogIn.get_captcha(img_Name)
+# i = LogIn.ImgNum(img_Name)
+# print(i)
+LogIn.Input_Num(LogIn.ImgNum(img_Name))
+
+LogIn.CheckLogIn(img_Name)
 
 driver.quit()
+
+print("測試結束")
+os._exit(0)
