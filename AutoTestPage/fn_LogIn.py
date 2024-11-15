@@ -45,14 +45,17 @@ class LogIn_Page:
         time.sleep(2)
 
     def get_captcha(self, path):
-        element = self.driver.find_element(By.XPATH, "/html/body/div/div/div/div[2]/form/div/div[3]/img")
+        # //*[@id="root"]/div/div/div[2]/form/div/div[3]/img /html/body/div/div/div/div[2]/form/div/div[3]/img
+        element = self.driver.find_element(By.XPATH, '//*[@id="root"]/div/div/div[2]/form/div/div[3]/img')
         self.driver.save_screenshot(path)  # 先將目前的 screen 存起來
         location = element.location  # 取得圖片 element 的位置
         size = element.size  # 取得圖片 element 的大小
-        left = location['x']                  # 決定上下左右邊界
-        top = location['y']
-        right = location['x'] + size['width']
-        bottom = location['y'] + size['height']
+        # 抓去目前畫面縮放比例大小，也就是windows 解析度縮放比例
+        scale = self.driver.execute_script('return window.devicePixelRatio')
+        left = location['x'] * scale                  # 決定上下左右邊界
+        top = location['y'] * scale
+        right = (location['x'] + size['width']) * scale
+        bottom = (location['y'] + size['height']) * scale
         #left = location['x'] + 130  # 決定上下左右邊界
         #top = location['y'] + 95
         #right = location['x'] + size['width'] + 230
