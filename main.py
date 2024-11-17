@@ -43,6 +43,8 @@ LogIn.CheckLogIn(img_Name)
 driver.quit()
 
 #test notebook add branch text
+#test home add branch txt
+
 
 print("測試結束")
 os._exit(0)
